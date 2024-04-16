@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MusicApp</title>
+    <title>Music App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application" %>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            align-items: center;
+            background-color: rgb(38, 41, 42);
+        }
+        #logo{
+            display: flex;
+            justify-content: center;
+            font-family: 'Bungee Inline', cursive; 
+            font-size: 75px; 
+            background-color: #FDDB61;
+            }
+    </style>
   </head>
 
   <body>
+    <h1 id='logo'>Music App</h1>
+    <% if logged_in? %>
+        <h2>Welcome, <%= current_user.email %></h2>
+        <form action="<%= session_url %>" method="POST">
+            <input type="hidden" name="_method" value="delete"/>
+            <input type="submit" value="Logout"> 
+        </form>
+    <% else %>
+        <a href="<%= new_user_url %>">Sign Up</a>
+        <br>
+        <a href="<%= new_session_url %>">Login</a>
+    <% end %>
     <%= yield %>
   </body>
 </html>

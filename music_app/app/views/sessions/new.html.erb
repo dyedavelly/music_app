@@ -1,0 +1,10 @@
+<h1> Login page </h1>
+<form action="<%= session_url %>" method="POST">
+  <label for="email"> EMAIL: </label>
+  <input type="text" id="email" name="user[email]" value="">
+  <br>
+  <label for="password"> PASSWORD: </label>
+  <input type="password" id="password" name="user[password]" value="">
+  <br>
+  <input type="submit" value="Login">
+</form>

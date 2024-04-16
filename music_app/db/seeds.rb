@@ -7,3 +7,21 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+User.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+
+
+paloma = User.create!(
+  email: "awesome_person@email.com", 
+  password: "password"
+)
+
+valerie = User.create!(
+  email: "valerous@email.com",
+  password: "password"
+)
+
+daniel = User.create!(
+  email: "dan_the_man@email.com",
+  password: "password"
+)
