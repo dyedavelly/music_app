@@ -12,16 +12,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: rgb(38, 41, 42);
+            background-color: #111;
+            margin: 0;
+            padding: 0;
+            border: 0;
         }
-        #logo{
+        #logo {
             display: flex;
             justify-content: center;
             font-family: 'Bungee Inline', cursive; 
             font-size: 75px; 
-            background-color: #FDDB61;
+            color: #FDDB61;
             }
-          a 
+        a 
           {
             background-color: #FDDB61;
             padding: 5px;
@@ -29,22 +32,31 @@
             text-decoration: none;
             color: black;
           }
+        .main-content {
+            background: #343030;
+            width: 800px;
+            height: 100vh;
+            border: solid grey;
+            margin: 0;
+        }
     </style>
   </head>
 
   <body>
-    <h1 id='logo'>Music App</h1>
-    <% if logged_in? %>
-        <h2>Welcome, <%= current_user.email %></h2>
-        <form action="<%= session_url %>" method="POST">
-            <input type="hidden" name="_method" value="delete"/>
-            <input type="submit" value="Logout"> 
-        </form>
-    <% else %>
-        <a href="<%= new_user_url %>">Sign Up</a>
-        <br>
-        <a href="<%= new_session_url %>">Login</a>
-    <% end %>
-    <%= yield %>
+    <div class="main-content">
+        <h1 id='logo'>Music App</h1>
+        <% if logged_in? %>
+            <h2>Welcome, <%= current_user.email %></h2>
+            <form action="<%= session_url %>" method="POST">
+                <input type="hidden" name="_method" value="delete"/>
+                <input type="submit" value="Logout"> 
+            </form>
+        <% else %>
+            <a href="<%= new_user_url %>">Sign Up</a>
+            <br>
+            <a href="<%= new_session_url %>">Login</a>
+        <% end %>
+        <%= yield %>
+    </div>
   </body>
 </html>
